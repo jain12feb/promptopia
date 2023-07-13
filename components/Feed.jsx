@@ -143,7 +143,7 @@ const Feed = () => {
           handleTagClick={handleTagClick}
         />
       ) : (
-        allPosts && (
+       (
           <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
         )
       )}
