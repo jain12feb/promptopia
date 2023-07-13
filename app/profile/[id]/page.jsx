@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 import Profile from "@/components/Profile";
 
 const UserProfile = ({ params, searchParams }) => {
-  const {
-    name: { userName },
-  } = searchParams;
+  const { name: userName } = searchParams;
 
   const [userPosts, setUserPosts] = useState([]);
 
