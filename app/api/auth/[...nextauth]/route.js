@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 
 import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
@@ -9,6 +10,11 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID || "171cdce6cbeedc27ca33",
+      clientSecret:
+        process.env.GITHUB_SECRET || "55e331e9e468b33456418485731fb27327b22048",
     }),
   ],
   callbacks: {
@@ -29,14 +35,14 @@ const handler = NextAuth({
         // console.log("User Credentials from Google ", credentials);
 
         // check if user already exists
-        const userExists = await User.findOne({ email: profile.email });
+        const userExists = await User.findOne({ email: user.email });
 
         // if not, create a new document and save user in MongoDB
         if (!userExists) {
           await User.create({
-            email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
-            image: profile.picture,
+            email: user?.email,
+            username: user?.name.replace(" ", "").toLowerCase(),
+            image: user?.image,
           });
         }
 

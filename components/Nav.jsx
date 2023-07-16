@@ -89,7 +89,7 @@ const Nav = () => {
             </Tooltip>
           </div>
         ) : (
-          <>
+          <div className="flex gap-3 md:gap-5">
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
@@ -98,12 +98,20 @@ const Nav = () => {
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className="rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center"
+                  className="rounded-full py-1.5 px-5 text-black border border-black text-center text-sm font-inter flex items-center justify-center"
                 >
-                  Sign in
+                  <img
+                    loading="lazy"
+                    height="24"
+                    width="24"
+                    className="mr-2"
+                    id="provider-logo"
+                    src={`https://authjs.dev/img/providers/${provider.id}.svg`}
+                  />
+                  Sign in with {provider.name}
                 </button>
               ))}
-          </>
+          </div>
         )}
       </div>
 
@@ -152,7 +160,7 @@ const Nav = () => {
             )}
           </div>
         ) : (
-          <>
+          <div className="flex gap-2">
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
@@ -161,12 +169,20 @@ const Nav = () => {
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className="rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center"
+                  className="rounded-full border border-black py-1.5 px-5 text-black  text-center text-sm font-inter flex items-center justify-center"
                 >
-                  Sign in
+                  Sign in with{" "}
+                  <img
+                    loading="lazy"
+                    height="24"
+                    width="24"
+                    className="ml-2"
+                    id="provider-logo"
+                    src={`https://authjs.dev/img/providers/${provider.id}.svg`}
+                  />
                 </button>
               ))}
-          </>
+          </div>
         )}
       </div>
     </nav>

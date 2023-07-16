@@ -5,7 +5,7 @@ const nextConfig = {
   //   serverComponentsExternalPackages: ["mongoose"], // <-- and this
   // },
   images: {
-    domains: ["lh3.googleusercontent.com"],
+    domains: ["lh3.googleusercontent.com", "avatars.githubusercontent.com"],
   },
   // and the following to enable top-level await support for Webpack
   // webpack: (config) => {
